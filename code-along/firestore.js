@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', async function(event) {
+
+  // Telling our application how to talk to the database
+
+  let db = firebase.firestore()
+
   // Step 1: Make the world's tiniest to-do app
 
   let form = document.querySelector('form')
