@@ -24,14 +24,36 @@ document.addEventListener('DOMContentLoaded', async function(event) {
     `)
     }
     
-
     document.querySelector('#todo').value = '' //erases previous entered stuff in the box where we enter stuff
-
-
   })
 
-
   // Step 2: Read existing to-dos from Firestore
-  // Step 3: Add code to Step 1 to add todo to Firestore
-  // Step 4: Add code to allow completing todos
+
+  let querySnapshot = await db.collection('todos').get() //our collection/table is called todos
+  console.log(querySnapshot.size)
+
+  let todos = querySnapshot.docs //documents out of this collection
+  console.log(todos)
+
+  for(let i = 0; i < todos.length; i++) {
+    let todo = todos[i]
+    console.log(todo)
+    let todoId = todo.id
+    console.log(todoId)
+    let todoData = todo.data()
+    console.log(todoData)
+    let todoText = todoData.text
+ 
+    let todoList = document.querySelector('.todos')
+    todoList.insertAdjacentHTML('beforeend', `
+    <div class="py-4 text-xl border-b-2 border-purple-500 w-full">
+      ${todoText}
+    <div>
+    `
+    )
+  }
+
+ // Step 3: Add code to Step 1 to add todo to Firestore
+ // Step 4: Add code to allow completing todos
+
 })
