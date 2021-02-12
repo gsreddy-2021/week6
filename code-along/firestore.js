@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async function(event) {
     if (todoText.length > 0) {    // this if loop would prevent adding stuff when you hit add to the empty box
       let todoList = document.querySelector('.todos')
     todoList.insertAdjacentHTML('beforeend', `
-    <div class="py-4 text-xl border-b-2 border-purple-500 w-full">
+    <div class="todo-${todoId} py-4 text-xl border-b-2 border-purple-500 w-full">
       ${todoText}
     <div>
     `)
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', async function(event) {
     let todoList = document.querySelector('.todos')
     todoList.insertAdjacentHTML('beforeend', `
       <div class="todo-${todoId} py-4 text-xl border-b-2 border-purple-500 w-full">
-        <a class="done p-2 text-sm bg-green-500 text-white">✔</a>
+        <a href="#" class="done p-2 text-sm bg-green-500 text-white">✔</a>
            ${todoText}
        <div>
     `)
