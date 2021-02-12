@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async function(event) {
   // Step 1: Make the world's tiniest to-do app
 
   let form = document.querySelector('form')
-  form.addEventListener('submit', function(event) {
+  form.addEventListener('submit', async function(event) {
     event.preventDefault()
 
     //console.log('todo submitted')
@@ -22,6 +22,14 @@ document.addEventListener('DOMContentLoaded', async function(event) {
       ${todoText}
     <div>
     `)
+
+    let docRef = await db.collection('todos').add({
+      text: todoText  //add a record to the database
+    })
+
+    let todoId = docRef.id
+    console.log(`new todo created: ${todoId}`)  //shows unique ID of the added ToDo task
+
     }
     
     document.querySelector('#todo').value = '' //erases previous entered stuff in the box where we enter stuff
