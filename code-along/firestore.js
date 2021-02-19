@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', async function(event) {
 
     let todoText = document.querySelector('#todo').value
     console.log(todoText)
+    
+    let todoId = docRef.id
 
     if (todoText.length > 0) {    // this if loop would prevent adding stuff when you hit add to the empty box
       let todoList = document.querySelector('.todos')
@@ -24,11 +26,11 @@ document.addEventListener('DOMContentLoaded', async function(event) {
     `)
 
     let docRef = await db.collection('todos').add({
-      text: todoText  //add a record to the database
+      text: todoText  //add a record to the database      
     })
 
-    let todoId = docRef.id
-    console.log(`new todo created: ${todoId}`)  //shows unique ID of the added ToDo task
+    
+    console.log(`new todo created: ${todoId}`)  //shows unique ID of the added ToDo task 
 
     }
     
